@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: lukejv-dev
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,7 +34,7 @@ jobs:
       - name: Build website
         run: npm run _build
         env:
-          SITE_URL: https://vanvonlj.github.io
+          SITE_URL: https://lukejv-dev.github.io
           PROXY_BASE_URL: /documentation-site/
 
       - name: Upload artifact
@@ -46,7 +46,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: lukejv-dev
     needs: build
     steps:
       - name: Deploy to GitHub Pages
